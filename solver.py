@@ -12,9 +12,6 @@ def generate_candidate(func_template):
 
 def deprecated_template_exec():
     """
-
-    Temp: take all the values from the `args`, put them as unique names in
-        the _objects, add all the objects, return the value
     """
     apply = None
     try:
@@ -56,4 +53,3 @@ def generate_solvers(problem, solution, max=1):
 
 
 generate_candidate(deprecated_template_exec)
-
