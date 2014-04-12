@@ -1,7 +1,37 @@
+from primitive import Solver, DefFunc, DefObj
+
 __author__ = 'shefuto'
 
 
-def generate_candidate():
+def generate_candidate(func_template):
+    initial = Solver()
+    function = func_template()
+    print function
+    function(initial)
+
+
+def deprecated_template_exec():
+    """
+
+    Temp: take all the values from the `args`, put them as unique names in
+        the _objects, add all the objects, return the value
+    """
+    apply = None
+    try:
+        exec """
+def apply(solver, *args):
+    defnode = DefNode(solver)
+    deffunc = DefFunc(solver)
+
+
+    pass
+            """
+    except SyntaxError:
+        pass
+    return apply
+
+
+def evolve(candidate, problem, solution):
     pass
 
 
@@ -18,8 +48,12 @@ def generate_solvers(problem, solution, max=1):
     """
     solvers = []
     for counter in range(max):
-        candidate = generate_candidate()
+        candidate = generate_candidate(deprecated_template_exec)
         solver = evolve(candidate, problem, solution)
         solvers.append(solver)
 
-    pass
+    return solvers
+
+
+generate_candidate(deprecated_template_exec)
+
